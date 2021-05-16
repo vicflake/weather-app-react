@@ -1,0 +1,14 @@
+.WeatherBox {
+    text-align: center;
+  }
+  
+  .WeatherBox h1 {
+    margin: 20px 0 5px 0;
+    text-align: center;
+  }
+  
+  .WeatherBox img {
+    width: 150px;
+    margin-top: 5px;
+  }
+  
