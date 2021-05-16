@@ -24,7 +24,7 @@ function App() {
         <WeatherInfo humidity="80" wind="15" precipitation="20" />
       </div>
       <footer>
-        <a href="https://github.com/vicflake/weather-app-react">Open-source</a>
+        <a href="https://github.com/vicflake/weather-app-react" target="_blank" rel="noreferrer">Open-source</a>
         <span> by Victoria Moreno</span> 
       </footer>
     </div>
