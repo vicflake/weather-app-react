@@ -6,10 +6,10 @@ export default function Temperature({ temp }) {
   return (
     <div className="Temperature">
       {temp}
-      <a href="#" className="Celsius">
+      <a href="/" className="Celsius">
         &deg;C |
       </a>
-      <a href="#" className="Farenheit">
+      <a href="/" className="Farenheit">
         &deg;F
       </a>
     </div>
