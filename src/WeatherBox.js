@@ -6,6 +6,7 @@ import axios from "axios";
 import "./WeatherBox.css";
 
 import Time from "./Time";
+import Temperature from "./Temperature"
 
 
 export default function WeatherBox(props) {
@@ -54,6 +55,8 @@ export default function WeatherBox(props) {
                 name="city"
                 className="Search-box"
                 placeholder="Type city..."
+                autoComplete = "off"
+                autoFocus="on"
                 
                 onChange={handleCityChange}
               />
@@ -63,12 +66,7 @@ export default function WeatherBox(props) {
             <h1>{weather.city}</h1>
             <h2>{weather.description}</h2>
             <img src={weather.icon} alt={weather.description} />
-            <h3>
-              {Math.round(weather.temperature)} 
-              <span className="units">
-                  &deg;C | &deg;F
-              </span>
-            </h3>
+            <Temperature celsius={weather.temperature}/>
             <ul>
               <li>Humidity: {weather.humidity}%</li>
               <li>Wind: {Math.round(weather.wind)}km/h</li>

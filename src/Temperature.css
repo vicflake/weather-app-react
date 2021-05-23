@@ -1,0 +1,9 @@
+.Temperature a {
+    color: blue;
+    text-decoration: none;
+}
+
+.Temperature a:hover {
+    cursor: pointer;
+    text-decoration: none;
+}
