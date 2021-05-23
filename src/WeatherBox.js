@@ -1,36 +1,68 @@
 
 import React, {useState} from "react";
 import axios from "axios";
-import Form from "./Form";
+
 
 import "./WeatherBox.css";
 
 import Time from "./Time";
 
-export default function WeatherBox() {
+
+export default function WeatherBox(props) {
   const [weather, setWeather] = useState({ loaded: false});
+  const [city, setCity] = useState(props.defaultCity);
   
   function handleResponse(response){
+    console.log(response.data)
     setWeather({
       loaded: true,
       temperature: response.data.main.temp,
       city: response.data.name,
       humidity: response.data.main.humidity,
       wind: response.data.wind.speed,
-      description: response.data.weather[0].description
+      description: response.data.weather[0].description,
+      icon: `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`,
+      date: new Date (response.data.dt * 1000)
     });
   }
+
+  function search(){
+    const apiKey = "a14342840b620868fe6664fa5e74a73b";
+    let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
+  
+    axios.get(apiUrl).then(handleResponse);
+  }
+
+  function handleSubmit(event){
+    event.preventDefault();
+    search();
+  }
+
+  function handleCityChange(event){
+    setCity(event.target.value);
+  }
+
 
 
   if (weather.loaded){
   
     return (
       <div className="WeatherBox">
-            <Form data=""/>
-            <Time />
+            <form className="Form" onSubmit={handleSubmit}>
+              <input
+                type="text"
+                name="city"
+                className="Search-box"
+                placeholder="Type city..."
+                
+                onChange={handleCityChange}
+              />
+              <input type="submit" value="Search" className="Search-btn"  />
+            </form>
+            <Time date={weather.date}/>
             <h1>{weather.city}</h1>
             <h2>{weather.description}</h2>
-            <img src="https://png.pngtree.com/png-vector/20190629/ourmid/pngtree-sun-icon-design-png-image_1518941.jpg" alt="Sunny" />
+            <img src={weather.icon} alt={weather.description} />
             <h3>
               {Math.round(weather.temperature)} 
               <span className="units">
@@ -46,11 +78,7 @@ export default function WeatherBox() {
     
 
   } else {
-    const apiKey = "41398c377c1e7843b58672992d67d0cf";
-    let city = "California"
-    let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
-  
-    axios.get(apiUrl).then(handleResponse);
+    search();
 
     return "Loading"
   }

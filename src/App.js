@@ -10,7 +10,7 @@ function App() {
   return (
     <div>
       <div className="App">
-        <WeatherBox />
+        <WeatherBox defaultCity="California"/>
       </div>
       <footer>
         <a href="https://github.com/vicflake/weather-app-react" target="_blank" rel="noreferrer">Open-source</a>
