@@ -16,10 +16,10 @@ export default function WeatherBox(props) {
   const [city, setCity] = useState(props.defaultCity);
   
   function handleResponse(response){
-    console.log(response.data)
     setWeather({
       loaded: true,
       temperature: response.data.main.temp,
+      coordinates: response.data.coord,
       city: response.data.name,
       humidity: response.data.main.humidity,
       wind: response.data.wind.speed,
@@ -73,7 +73,7 @@ export default function WeatherBox(props) {
               <li>Humidity: {weather.humidity}%</li>
               <li>Wind: {Math.round(weather.wind)}km/h</li>
             </ul>
-            <WeatherForecast />
+            <WeatherForecast coordinates={weather.coordinates} />
       </div>
     )
     
