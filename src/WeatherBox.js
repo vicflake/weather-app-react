@@ -8,6 +8,8 @@ import "./WeatherBox.css";
 import Time from "./Time";
 import Temperature from "./Temperature"
 
+import WeatherIcon from "./WeatherIcon"
+
 
 export default function WeatherBox(props) {
   const [weather, setWeather] = useState({ loaded: false});
@@ -22,7 +24,7 @@ export default function WeatherBox(props) {
       humidity: response.data.main.humidity,
       wind: response.data.wind.speed,
       description: response.data.weather[0].description,
-      icon: `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`,
+      icon: response.data.weather[0].icon,
       date: new Date (response.data.dt * 1000)
     });
   }
@@ -65,12 +67,13 @@ export default function WeatherBox(props) {
             <Time date={weather.date}/>
             <h1>{weather.city}</h1>
             <h2>{weather.description}</h2>
-            <img src={weather.icon} alt={weather.description} />
+            <WeatherIcon code={weather.icon} />
             <Temperature celsius={weather.temperature}/>
             <ul>
               <li>Humidity: {weather.humidity}%</li>
               <li>Wind: {Math.round(weather.wind)}km/h</li>
             </ul>
+           
       </div>
     )
     

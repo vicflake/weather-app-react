@@ -17,9 +17,8 @@
     font-size: 1em;
   }
   
-  .WeatherBox img {
-    width: 150px;
-    margin-top: 5px;
+  .WeatherBox canvas {
+    margin-top: 10px;
   }
 
   .WeatherBox h3 {
