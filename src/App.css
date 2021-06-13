@@ -11,10 +11,14 @@
 
 .App {
   font-family: 'Poppins', sans-serif;
-
 }
 
 footer {
   text-align: center;
   font-size: 0.7em;
+  color: #ffff;
+}
+
+footer a {
+  color: #ffff;
 }
