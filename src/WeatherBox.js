@@ -7,7 +7,7 @@ import "./WeatherBox.css";
 
 import Time from "./Time";
 import Temperature from "./Temperature"
-
+import WeatherForecast from "./WeatherForecast"
 import WeatherIcon from "./WeatherIcon"
 
 
@@ -67,13 +67,13 @@ export default function WeatherBox(props) {
             <Time date={weather.date}/>
             <h1>{weather.city}</h1>
             <h2>{weather.description}</h2>
-            <WeatherIcon code={weather.icon} />
+            <WeatherIcon code={weather.icon} size={65}/>
             <Temperature celsius={weather.temperature}/>
             <ul>
               <li>Humidity: {weather.humidity}%</li>
               <li>Wind: {Math.round(weather.wind)}km/h</li>
             </ul>
-           
+            <WeatherForecast />
       </div>
     )
     
